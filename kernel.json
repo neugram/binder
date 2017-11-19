@@ -1,0 +1,9 @@
+{
+    "argv": [
+        "/home/main/gopath/bin/ng", "-jupyter", 
+        "{connection_file}"
+        ],
+    "display_name": "Neugram",
+    "language": "neugram",
+    "name": "ng"
+}

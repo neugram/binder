@@ -30,7 +30,7 @@ run go get golang.org/x/tools/cmd/goimports && \
 # install the Go kernel
 run mkdir -p $HOME/.local/share/jupyter/kernels
 
-copy ./kernel $HOME/.local/share/jupyter/kernels/neugram
+copy ./neugram $HOME/.local/share/jupyter/kernels/neugram
 
 copy ./examples $HOME/notebooks
 

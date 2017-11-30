@@ -32,7 +32,7 @@ run mkdir -p $HOME/.local/share/jupyter/kernels
 
 copy ./kernel $HOME/.local/share/jupyter/kernels/neugram
 
-run mkdir -p $HOME/notebooks
+copy ./examples $HOME/notebooks
 
 user root
 run chown -R main:main /home/main/notebooks

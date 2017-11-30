@@ -1,5 +1,5 @@
 ##
-## a simple Dockerfile where Go and Gophernotes are installed
+## a simple Dockerfile where Go and Neugram are installed
 ##
 from andrewosh/binder-base
 maintainer Sebastien Binet <binet@cern.ch>
@@ -15,6 +15,10 @@ run apt-get update -y && \
 	tar -C /usr/local -zxf go${GOVERS}.linux-amd64.tar.gz && \
 	/bin/rm go${GOVERS}.linux-amd64.tar.gz
 
+# prepare for Go plugin compilation
+run mkdir /usr/local/go/pkg/linux_amd64_dynlink && \
+	chown -R main:main /usr/local/go
+
 user main
 
 env GOPATH $HOME/gopath
@@ -24,11 +28,9 @@ run go get golang.org/x/tools/cmd/goimports && \
 	go get neugram.io/ng/...
 
 # install the Go kernel
-run mkdir -p $HOME/.local/share/jupyter/kernels/neugram
+run mkdir -p $HOME/.local/share/jupyter/kernels
 
-copy ./kernel.json $HOME/.local/share/jupyter/kernels/neugram/.
-copy ./logo-32x32.png $HOME/.local/share/jupyter/kernels/neugram/.
-copy ./logo-64x64.png $HOME/.local/share/jupyter/kernels/neugram/.
+copy ./kernel $HOME/.local/share/jupyter/kernels/neugram
 
 run mkdir -p $HOME/notebooks
 

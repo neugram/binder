@@ -8,7 +8,7 @@ mkdir -p \
 	$HOME/.local/go/$GOVERS \
 	$HOME/go
 
-## install Go
+echo "::: install Go ${GOVERS}..."
 curl -O -L https://golang.org/dl/go${GOVERS}.linux-amd64.tar.gz
 tar -C $HOME/.local/go/$GOVERS -zxf go${GOVERS}.linux-amd64.tar.gz
 /bin/rm go${GOVERS}.linux-amd64.tar.gz
@@ -17,9 +17,10 @@ export GOROOT=$HOME/.local/go/$GOVERS/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
-## install interesting packages
+echo "::: installing neugram..."
 go get golang.org/x/tools/cmd/goimports
 go get neugram.io/ng/...
+echo "::: installing neugram... [done]"
 
 ## setup environment for Go
 
@@ -35,7 +36,8 @@ cat >> $HOME/.bashrc << EOF
 EOF
 
 ## install the Go kernel
-cat >| ./neugram/kernel.json << EOF
+git clone https://github.com/neugram/binder
+cat >| ./binder/neugram/kernel.json << EOF
 {
     "argv": [
         "$GOPATH/bin/ng", "-jupyter",
@@ -51,7 +53,7 @@ cat >| ./neugram/kernel.json << EOF
 	}
 }
 EOF
-jupyter kernelspec install ./neugram --user
+jupyter kernelspec install ./binder/neugram --user
 
 /bin/rm -rf binder
 

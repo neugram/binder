@@ -2,6 +2,6 @@
 
 A [mybinder](https://mybinder.org) compatible Jupyter notebook for [neugram](https://neugram.io).
 
-[![Binder](http://mybinder.org/badge.svg)](http://mybinder.org:/repo/neugram/binder)
+[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/neugram/binder/master)
 
 
